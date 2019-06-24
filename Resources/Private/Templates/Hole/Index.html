@@ -1,0 +1,53 @@
+<f:layout name="Default" />
+
+<f:section name="Title">A list of holes</f:section>
+
+<f:section name="Content">
+    <f:if condition="{holes}">
+        <f:then>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">PAR</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <f:for each="{holes}" as="hole" iteration="i">
+                    <tr>
+                        <th class="align-middle" scope="row">{hole.number}</th>
+                        <td class="align-middle"><f:if condition="{hole.photo}"><img class="" width="50" src="{f:uri.resource(resource: hole.photo)}" /></f:if></td>
+                        <td class="align-middle"><f:link.action action="show" arguments="{hole: hole}">{hole.name}</f:link.action></td>
+                        <td class="align-middle">{hole.par}</td>
+                        <td class="align-middle">
+                            <f:link.action class="btn btn-default" action="edit" arguments="{hole: hole}">Edit</f:link.action>
+                            <f:form class="d-inline" action="delete" arguments="{hole:hole}">
+                                <f:form.submit value="Delete" class="btn btn-danger " />
+                            </f:form>
+                        </td>
+                    </tr>
+                </f:for>
+                </tbody>
+            </table>
+
+            <ul>
+                <f:for each="{holes}" as="hole">
+                    <li>
+                        <f:link.action action="show" arguments="{hole: hole}">{hole.name}</f:link.action>
+                        <f:link.action action="edit" arguments="{hole: hole}">Edit</f:link.action>
+                        <f:form action="delete" arguments="{hole: hole}">
+                            <f:form.submit value="Delete" />
+                        </f:form>
+                    </li>
+                </f:for>
+            </ul>
+        </f:then>
+        <f:else>
+            <p>No holes created yet.</p>
+        </f:else>
+    </f:if>
+    <p><f:link.action action="new">Create a new hole</f:link.action></p>
+</f:section>

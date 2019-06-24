@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "htl3r/minigolfuo",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "HTL3R\\MinigolfUO\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "HTL3R.MinigolfUO"
+        }
+    }
+}

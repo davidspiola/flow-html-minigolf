@@ -1,0 +1,31 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show hole"{hole.name}"</f:section>
+
+<f:section name="Content">
+    <table>
+        <tr>
+            <th>Par</th>
+            <td>{hole.par}</td>
+        </tr>
+    
+        <tr>
+            <th>Name</th>
+            <td>{hole.name}</td>
+        </tr>
+    
+        <tr>
+            <th>Number</th>
+            <td>{hole.number}</td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td>
+                <f:if condition="{hole.photo}">
+                    <img class="" src="{f:uri.resource(resource: hole.photo)}" />
+                </f:if>
+            </td>
+        </tr>
+    </table>
+    <f:link.action action="index">Back</f:link.action>
+</f:section>
